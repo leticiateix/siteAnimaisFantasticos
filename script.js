@@ -85,3 +85,26 @@ function initScrollSuave() {
 }
 
 initScrollSuave(); // chamando a função
+
+// Animações ao scroll
+
+function initAnimacaoScroll() {
+    const sections = document.querySelectorAll(".js-scroll");
+
+    if (sections.length) {
+        const windowMetade = window.innerHeight * 0.6;
+
+        function animaScroll() {
+            sections.forEach((section) => {
+                const sectionTop = section.getBoundingClientRect().top - windowMetade; // o getBoundingClientRect retorna valores de top, bottom.. que o elemento está em relação ao topo
+                if (sectionTop < 0) {
+                    section.classList.add("ativo"); // adiciona a classe "ativo" nas seções quando passar do topo
+                }
+            });
+        }
+        animaScroll(); // ativa a função para que ao iniciar o site a tela não fique "vazia"
+        window.addEventListener("scroll", animaScroll);
+    }
+}
+
+initAnimacaoScroll();
