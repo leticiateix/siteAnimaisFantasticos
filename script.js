@@ -51,3 +51,37 @@ function initAccordion() {
 }
 
 initAccordion();
+
+// Scroll suave de link interno
+
+function initScrollSuave() {
+    const linksInternos = document.querySelectorAll('.js-menu a[href^="#"]');
+
+    function scrollToSection(event) {
+        event.preventDefault();
+        const href = event.currentTarget.getAttribute("href"); // getAttriute é para retornar apenas o link com # na frente
+        const section = document.querySelector(href);
+        const topoSection = section.offsetTop; // retorna o valor do topo da seção até o topo da página
+        //window.scrollTo(0, topoSection);
+
+        // forma alternativa de scroll suave
+        section.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
+
+        // window.scrollTo({
+        //     top: topoSection,
+        //     behavior: "smooth", // faz com que o scroll fique suave
+        //});
+    }
+
+    linksInternos.forEach((link) => {
+        link.addEventListener("click", scrollToSection);
+    });
+
+    // método --> window.scrollTo(x, y) : serve para mover a tela no eixo x e/ou y
+    // método --> window.scrollTo(options - passa propriedades)
+}
+
+initScrollSuave(); // chamando a função
