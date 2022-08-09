@@ -15,7 +15,9 @@ function initTabNav() {
             tabContent.forEach((section) => {
                 section.classList.remove("ativo");
             });
-            tabContent[index].classList.add("ativo");
+            const adicionarDirecao = tabContent[index].dataset.anime;
+
+            tabContent[index].classList.add("ativo", adicionarDirecao);
         }
 
         tabMenu.forEach((li, index) => {
