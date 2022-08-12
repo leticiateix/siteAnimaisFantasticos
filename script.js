@@ -110,3 +110,5 @@ function initAnimacaoScroll() {
 }
 
 initAnimacaoScroll();
+
+// Dropdown Menu
